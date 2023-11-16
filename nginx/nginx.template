@@ -1,0 +1,17 @@
+http {
+   
+    upstream backend {
+        server %BLUE%;
+        server %GREEN%;
+    }
+
+    server {
+        listen 80;
+        location / {
+            proxy_pass http://backend;
+        }
+    }
+}
+events {
+    worker_connections  1024;
+}
