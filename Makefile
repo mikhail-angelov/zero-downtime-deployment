@@ -23,8 +23,8 @@ deploy:
 	@echo "✅ ${target} version: ${version} is deployed"
 
 balance:
-	sed -e "s;%BLUE%;${blue};g" -e "s;%GREEN%;${green};g" nginx/nginx.template > nginx/nginx.conf
-	docker exec -it balancer /bin/sh -c "nginx -s reload"
+	sed -e "s/%BLUE%/${blue}/g" -e "s/%GREEN%/${green}/g" nginx/nginx.template > nginx/nginx.conf
+	docker exec nginx /bin/sh -c "nginx -s reload"
 	@echo "✅ load balancer is ready"
 
 blue:
